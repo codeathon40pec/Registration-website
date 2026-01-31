@@ -3,7 +3,7 @@ import feedbackRec from '../assets/feedback_rec.mp4';
 import feedbackPsr from '../assets/feedback_psr.mp4';
 import feedbackSathyabama from '../assets/feedback_sathyabama.mp4';
 import after12HoursImg from '../assets/d4e30253-3288-4711-8e33-5c87f001f05a.jpg';
-import firstPrizeWinnersImg from '../assets/1c31a91d-72cf-4135-b5e1-548a683df0dd.jpg';
+import firstPrizeWinnersImg from '../assets/d7c9396e-4d51-47e2-afc9-df020cef4a83.jpg';
 import eventStartedVid from '../assets/event_started.mp4';
 import secondPrizeWinnersImg from '../assets/b55b27a7-ad04-489f-9486-20bdb483c943.jpg';
 import judgevisit1 from '../assets/d54bf00d-23d3-44bf-9a64-15e505e459ea.jpg';
