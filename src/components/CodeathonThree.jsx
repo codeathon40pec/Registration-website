@@ -5,6 +5,9 @@ import feedbackSathyabama from '../assets/feedback_sathyabama.mp4';
 import after12HoursImg from '../assets/d4e30253-3288-4711-8e33-5c87f001f05a.jpg';
 import firstPrizeWinnersImg from '../assets/1c31a91d-72cf-4135-b5e1-548a683df0dd.jpg';
 import eventStartedVid from '../assets/event_started.mp4';
+import secondPrizeWinnersImg from '../assets/b55b27a7-ad04-489f-9486-20bdb483c943.jpg';
+import judgevisit1 from '../assets/d54bf00d-23d3-44bf-9a64-15e505e459ea.jpg';
+import judgevisit2 from '../assets/97c21cf3-7fd5-46bc-9da8-28d2f42cdcbc.jpg';
 
 const CodeathonThree = () => {
     const mediaItems = [
@@ -25,6 +28,16 @@ const CodeathonThree = () => {
         },
         {
             type: 'image',
+            title: "Judge Visit 1",
+            src: judgevisit1
+        },
+        {
+            type: 'image',
+            title: "Judge Visit 2",
+            src: judgevisit2
+        },
+        {
+            type: 'image',
             title: "after 12 hours",
             src: after12HoursImg
         },
@@ -32,6 +45,11 @@ const CodeathonThree = () => {
             type: 'image',
             title: "First prize winners",
             src: firstPrizeWinnersImg
+        },
+        {
+            type: 'image',
+            title: "Second prize winners",
+            src: secondPrizeWinnersImg
         },
         {
             type: 'video',
