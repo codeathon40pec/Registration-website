@@ -60,9 +60,11 @@ const CodeathonThree = () => {
                 <div className="flex flex-wrap justify-center gap-8 mt-12 mb-16">
                     {mediaItems.map((item, index) => (
                         <div key={index} className="flex flex-col items-center w-full md:w-[30%] min-w-[300px]">
-                            <h2 className="text-base md:text-lg font-['Courier Prime'] font-bold text-[var(--primary-color)] text-center drop-shadow-sm tracking-wide leading-relaxed px-2 mb-4">
-                                {item.title}
-                            </h2>
+                            <div className="h-16 flex items-center justify-center w-full mb-4">
+                                <h2 className="text-base md:text-lg font-['Courier Prime'] font-bold text-[var(--primary-color)] text-center drop-shadow-sm tracking-wide leading-relaxed px-2 uppercase">
+                                    {item.title}
+                                </h2>
+                            </div>
                             <div className="w-full aspect-video border border-[var(--primary-color)] rounded-lg overflow-hidden shadow-[0_0_15px_rgba(200,0,0,0.3)] bg-black transition-transform hover:scale-105 duration-300">
                                 {item.type === 'video' ? (
                                     <video controls className="w-full h-full object-cover">
