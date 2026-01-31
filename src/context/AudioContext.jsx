@@ -13,37 +13,37 @@ export const AudioProvider = ({ children }) => {
     const sourceNodeRef = useRef(null);
     const audioBufferRef = useRef(null);
 
+    const hasInteractedRef = useRef(false);
+
     useEffect(() => {
+        // Init context immediately to be ready for interaction unlocks
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        const audioContext = new AudioContextClass();
+        audioContextRef.current = audioContext;
+
+        // Create Analyser
+        const analyser = audioContext.createAnalyser();
+        analyser.fftSize = 256;
+        analyserRef.current = analyser;
+
+        const bufferLength = analyser.frequencyBinCount;
+        dataArrayRef.current = new Uint8Array(bufferLength);
+
         const loadAudio = async () => {
             try {
                 const response = await fetch(themeAudio);
                 const arrayBuffer = await response.arrayBuffer();
-                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                audioContextRef.current = audioContext;
 
-                // Create Analyser
-                const analyser = audioContext.createAnalyser();
-                analyser.fftSize = 256;
-                analyserRef.current = analyser;
-
-                const bufferLength = analyser.frequencyBinCount;
-                dataArrayRef.current = new Uint8Array(bufferLength);
-
+                // Decode
                 const decodedBuffer = await audioContext.decodeAudioData(arrayBuffer);
                 audioBufferRef.current = decodedBuffer;
 
-                // Auto-play attempt
-                try {
-                    const source = audioContext.createBufferSource();
-                    source.buffer = decodedBuffer;
-                    source.loop = true;
-                    source.connect(analyser);
-                    analyser.connect(audioContext.destination);
-                    source.start(0);
-                    sourceNodeRef.current = source;
-                    setIsPlaying(true);
-                } catch (e) {
-                    console.log("Auto-play blocked", e);
+                // Check if user already interacted while we were loading
+                if (hasInteractedRef.current) {
+                    tryPlay(audioContext, decodedBuffer, analyser);
+                } else {
+                    // Try auto-play anyway (might work if policy allows)
+                    tryPlay(audioContext, decodedBuffer, analyser);
                 }
 
             } catch (error) {
@@ -60,35 +60,115 @@ export const AudioProvider = ({ children }) => {
         };
     }, []);
 
-    // Unlock audio on first interaction if blocked
+    const tryPlay = (ctx, buffer, analyser) => {
+        if (!ctx || !buffer || sourceNodeRef.current) return;
+
+        try {
+            // If context is suspended and we think we can play, try resuming
+            if (ctx.state === 'suspended' && hasInteractedRef.current) {
+                ctx.resume();
+            }
+
+            const source = ctx.createBufferSource();
+            source.buffer = buffer;
+            source.loop = true;
+            source.connect(analyser);
+            analyser.connect(ctx.destination);
+            source.start(0);
+            sourceNodeRef.current = source;
+            setIsPlaying(true);
+        } catch (e) {
+            console.log("Play failed (likely needs interaction)", e);
+            setIsPlaying(false);
+        }
+    };
+
+    // Unlock audio on ANY interaction
     useEffect(() => {
         const handleInteraction = async () => {
-            if (audioContextRef.current && audioContextRef.current.state === 'suspended') {
-                try {
-                    await audioContextRef.current.resume();
-                    if (!isPlaying && audioBufferRef.current && !sourceNodeRef.current) {
-                        try {
-                            // Re-trigger play logic if it wasn't started
-                            const source = audioContextRef.current.createBufferSource();
-                            source.buffer = audioBufferRef.current;
-                            source.loop = true;
-                            source.connect(analyserRef.current);
-                            analyserRef.current.connect(audioContextRef.current.destination);
-                            source.start(0);
-                            sourceNodeRef.current = source;
-                            setIsPlaying(true);
-                        } catch (e) {
-                            console.error("Play on interaction failed", e);
-                        }
+            hasInteractedRef.current = true;
+
+            if (audioContextRef.current) {
+                if (audioContextRef.current.state === 'suspended') {
+                    try {
+                        await audioContextRef.current.resume();
+                    } catch (e) {
+                        console.error("Resume failed", e);
                     }
-                } catch (e) {
-                    console.error("Audio Context resume failed", e);
+                }
+
+                // If we have data but not playing, try playing now
+                if (!isPlaying && audioBufferRef.current && !sourceNodeRef.current) {
+                    tryPlay(audioContextRef.current, audioBufferRef.current, analyserRef.current);
                 }
             }
         };
 
         window.addEventListener('click', handleInteraction);
-        return () => window.removeEventListener('click', handleInteraction);
+        window.addEventListener('touchstart', handleInteraction);
+        window.addEventListener('keydown', handleInteraction);
+
+        return () => {
+            window.removeEventListener('click', handleInteraction);
+            window.removeEventListener('touchstart', handleInteraction);
+            window.removeEventListener('keydown', handleInteraction);
+        };
+    }, [isPlaying]);
+
+    // Handle Page Visibility (Tab Switch) & Focus
+    useEffect(() => {
+        const handleVisibilityChange = async () => {
+            const shouldSuspend = document.hidden;
+            // Also check document.visibilityState if needed, but hidden is standard
+
+            if (shouldSuspend) {
+                // User switched tabs or minimized -> Suspend Audio
+                if (audioContextRef.current && audioContextRef.current.state === 'running') {
+                    try {
+                        await audioContextRef.current.suspend();
+                    } catch (e) {
+                        console.error("Suspend failed", e);
+                    }
+                }
+            } else {
+                // User came back -> Resume ONLY if it was supposed to be playing
+                if (isPlaying && audioContextRef.current && audioContextRef.current.state === 'suspended') {
+                    try {
+                        await audioContextRef.current.resume();
+                    } catch (e) {
+                        console.error("Resume failed", e);
+                    }
+                }
+            }
+        };
+
+        const handleBlur = async () => {
+            // Optional: if user clicks URL bar or another window, pause.
+            // This is stricter than visibilityChange.
+            if (audioContextRef.current && audioContextRef.current.state === 'running') {
+                try {
+                    await audioContextRef.current.suspend();
+                } catch (e) { }
+            }
+        };
+
+        const handleFocus = async () => {
+            if (isPlaying && audioContextRef.current && audioContextRef.current.state === 'suspended') {
+                try {
+                    await audioContextRef.current.resume();
+                } catch (e) { }
+            }
+        };
+
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+        window.addEventListener('blur', handleBlur);
+        window.addEventListener('focus', handleFocus);
+
+        return () => {
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+            window.removeEventListener('blur', handleBlur);
+            window.removeEventListener('focus', handleFocus);
+        };
     }, [isPlaying]);
 
     const toggleAudio = useCallback(async () => {

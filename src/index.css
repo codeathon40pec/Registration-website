@@ -9,6 +9,7 @@
     --text-color: #e0e0e0;
     --font-heading: 'Nosifer', cursive;
     --font-body: 'Courier Prime', monospace;
+    --font-dripping: 'Butcherman', cursive;
     --glow-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color), 0 0 40px var(--primary-color);
 }
 
@@ -363,6 +364,10 @@ h3,
     color: var(--primary-color);
     text-transform: uppercase;
     letter-spacing: 2px;
+}
+
+.font-dripping {
+    font-family: var(--font-dripping);
 }
 
 .audio-btn {

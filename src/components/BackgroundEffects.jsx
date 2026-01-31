@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import BloodRain from './BloodRain';
-import FloatingText from './FloatingText';
+
 import Thunder from './Thunder';
 
 const BackgroundEffects = () => {
@@ -28,7 +28,7 @@ const BackgroundEffects = () => {
             <div className="overlay"></div>
             <div className="storm"></div>
             <BloodRain />
-            <FloatingText />
+
             <Thunder />
             <div className="fog-layer-1"></div>
             <div className="fog-layer-2"></div>
