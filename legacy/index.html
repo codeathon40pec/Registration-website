@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codeathon 4.O | Strange Things</title>
+    <meta name="description" content="Register for Codeathon 4.O - A Stranger Things themed coding event.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Roboto:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="overlay"></div>
+    <div class="particles" id="particles"></div>
+    <div class="particles" id="particles"></div>
+    <div class="storm"></div>
+
+    <header>
+        <nav>
+            <div class="logo">CODEATHON 4.O</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#register" class="cta-btn">Register</a></li>
+            </ul>
+        </nav>
+        <button id="audio-btn" class="audio-btn" aria-label="Toggle Audio">🔇</button>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="hero-content">
+                <h1 class="strange-title" data-text="Codeathon 4.O">Codeathon 4.O</h1>
+                <p class="date">October 31st, 2026</p>
+                <a href="#register" class="main-btn">Enter if you dare</a>
+            </div>
+        </section>
+
+        <section id="about" class="section about">
+            <div class="container">
+                <h2>The Upside Down Awaits</h2>
+                <p>Join us for a coding experience like no other. Codeathon 4.O brings you challenges from another
+                    dimension. Will you survive the night?</p>
+            </div>
+        </section>
+
+        <section id="gallery" class="section gallery">
+            <div class="container">
+                <h2>Past Experiments</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <div class="placeholder-img">Event 1</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="placeholder-img">Event 2</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="placeholder-img">Event 3</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="placeholder-img">Event 4</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="register" class="section register">
+            <div class="container">
+                <h2>Join the Party</h2>
+                <p>Registration link coming soon...</p>
+                <button class="register-btn" disabled>Registration Closed</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Codeathon 4.O. All rights reserved in this dimension.</p>
+    </footer>
+
+    <audio id="theme-audio" loop>
+        <!-- Placeholder audio link - typically requires user interaction to play -->
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
