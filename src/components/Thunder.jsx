@@ -58,17 +58,19 @@ const Thunder = () => {
                     if (data) {
                         // Determine volume/beat
                         let sum = 0;
-                        // Focus on lower frequencies for "bass/impact"
-                        for (let i = 0; i < data.length / 4; i++) {
+                        // Focus on very low frequencies (Bass) - Lower 1/8th of the spectrum
+                        // FFT size 256 -> 128 bins. 1/8th is roughly first 16 bins.
+                        const bassBins = Math.floor(data.length / 8);
+                        for (let i = 0; i < bassBins; i++) {
                             sum += data[i];
                         }
-                        const average = sum / (data.length / 4);
+                        const average = sum / bassBins;
 
-                        // Threshold logic (heuristic)
+                        // Threshold logic (Tuned for impact)
                         const now = Date.now();
-                        // 180 is typically a loud beat in 8-bit (0-255) frequency data
-                        // 3000ms cooldown to prevent strobe madness
-                        if (average > 180 && now - lastFlashTimeRef.current > 3000) {
+                        // 210 is a high threshold for specific bass hits. 
+                        // 4000ms cooldown gives it a dramatic, periodic feel rather than constant flashing.
+                        if (average > 210 && now - lastFlashTimeRef.current > 4000) {
                             triggerFlash();
                             lastFlashTimeRef.current = now;
                         }

@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import feedbackRec from '../assets/feedback_rec.mp4';
 import feedbackPsr from '../assets/feedback_psr.mp4';
@@ -8,8 +9,12 @@ import eventStartedVid from '../assets/event_started.mp4';
 import secondPrizeWinnersImg from '../assets/b55b27a7-ad04-489f-9486-20bdb483c943.jpg';
 import judgevisit1 from '../assets/d54bf00d-23d3-44bf-9a64-15e505e459ea.jpg';
 import judgevisit2 from '../assets/97c21cf3-7fd5-46bc-9da8-28d2f42cdcbc.jpg';
+import { useAudio } from '../context/AudioContext';
 
 const CodeathonThree = () => {
+    const { suspendAudio, resumeAudio } = useAudio();
+    const videoRefs = useRef([]);
+
     const mediaItems = [
         {
             type: 'video',
@@ -58,6 +63,31 @@ const CodeathonThree = () => {
         }
     ];
 
+    const handlePlay = (index) => {
+        suspendAudio();
+        // Pause other videos
+        videoRefs.current.forEach((video, i) => {
+            if (i !== index && video) {
+                video.pause();
+            }
+        });
+    };
+
+    const handlePause = () => {
+        // Only resume audio if ALL videos are paused
+        const isAnyVideoPlaying = videoRefs.current.some(video => video && !video.paused && !video.ended);
+        if (!isAnyVideoPlaying) {
+            resumeAudio();
+        }
+    };
+
+    const handleImageClick = () => {
+        // Pause all videos when an image is clicked
+        videoRefs.current.forEach(video => {
+            if (video) video.pause();
+        });
+    };
+
     return (
         <div className="min-h-screen bg-transparent text-white pt-24 pb-12 px-4 relative z-10">
             <div className="container mx-auto">
@@ -91,7 +121,14 @@ const CodeathonThree = () => {
                             </div>
                             <div className="w-full aspect-video border border-[var(--primary-color)] rounded-lg overflow-hidden shadow-[0_0_15px_rgba(200,0,0,0.3)] bg-black transition-transform hover:scale-105 duration-300">
                                 {item.type === 'video' ? (
-                                    <video controls className="w-full h-full object-cover">
+                                    <video
+                                        ref={el => videoRefs.current[index] = el}
+                                        controls
+                                        className="w-full h-full object-cover"
+                                        onPlay={() => handlePlay(index)}
+                                        onPause={handlePause}
+                                        onEnded={handlePause}
+                                    >
                                         <source src={item.src} type="video/mp4" />
                                         Your browser does not support the video tag.
                                     </video>
@@ -99,7 +136,8 @@ const CodeathonThree = () => {
                                     <img
                                         src={item.src}
                                         alt={item.title}
-                                        className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-300"
+                                        className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-300 cursor-pointer"
+                                        onClick={handleImageClick}
                                     />
                                 )}
                             </div>

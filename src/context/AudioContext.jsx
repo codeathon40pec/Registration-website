@@ -14,6 +14,7 @@ export const AudioProvider = ({ children }) => {
     const audioBufferRef = useRef(null);
 
     const hasInteractedRef = useRef(false);
+    const isMediaPlayingRef = useRef(false); // Track if external media is blocking audio
 
     useEffect(() => {
         // Init context immediately to be ready for interaction unlocks
@@ -61,11 +62,11 @@ export const AudioProvider = ({ children }) => {
     }, []);
 
     const tryPlay = (ctx, buffer, analyser) => {
-        if (!ctx || !buffer || sourceNodeRef.current) return;
+        if (!ctx || !buffer || sourceNodeRef.current || isMediaPlayingRef.current) return;
 
         try {
             // If context is suspended and we think we can play, try resuming
-            if (ctx.state === 'suspended' && hasInteractedRef.current) {
+            if (ctx.state === 'suspended' && hasInteractedRef.current && !isMediaPlayingRef.current) {
                 ctx.resume();
             }
 
@@ -216,8 +217,28 @@ export const AudioProvider = ({ children }) => {
         return null;
     }, []);
 
+    const suspendAudio = useCallback(async () => {
+        if (audioContextRef.current && audioContextRef.current.state === 'running') {
+            try {
+                await audioContextRef.current.suspend();
+            } catch (e) {
+                console.error("Manual suspend failed", e);
+            }
+        }
+    }, []);
+
+    const resumeAudio = useCallback(async () => {
+        if (isPlaying && audioContextRef.current && audioContextRef.current.state === 'suspended') {
+            try {
+                await audioContextRef.current.resume();
+            } catch (e) {
+                console.error("Manual resume failed", e);
+            }
+        }
+    }, [isPlaying]);
+
     return (
-        <AudioContext.Provider value={{ isPlaying, toggleAudio, getAudioData }}>
+        <AudioContext.Provider value={{ isPlaying, toggleAudio, getAudioData, suspendAudio, resumeAudio }}>
             {children}
         </AudioContext.Provider>
     );

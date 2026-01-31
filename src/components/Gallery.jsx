@@ -1,15 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AnimatedSection from './AnimatedSection';
+import { useAudio } from '../context/AudioContext';
 
 const Gallery = () => {
     const [activeVideo, setActiveVideo] = useState(null);
-
-
-
-
+    const { suspendAudio, resumeAudio } = useAudio();
 
     const handleOpenVideo = (videoKey) => {
+        suspendAudio();
         const videoMap = {
             '1.0': {
                 id: '6FAhf-aA2YU',
@@ -21,6 +20,11 @@ const Gallery = () => {
             }
         };
         setActiveVideo(videoMap[videoKey]);
+    };
+
+    const handleCloseVideo = () => {
+        setActiveVideo(null);
+        resumeAudio();
     };
 
     return (
@@ -52,11 +56,11 @@ const Gallery = () => {
             </AnimatedSection>
 
             {activeVideo && (
-                <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black backdrop-blur-none p-4" onClick={() => setActiveVideo(null)}>
+                <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black backdrop-blur-none p-4" onClick={handleCloseVideo}>
                     <div className="relative w-full max-w-4xl bg-black border border-[var(--primary-color)] rounded-lg shadow-[0_0_30px_var(--primary-color)] p-2 md:p-6" onClick={e => e.stopPropagation()}>
                         <button
                             className="absolute -top-3 -right-3 md:-top-4 md:-right-4 bg-[var(--primary-color)] text-black w-8 h-8 md:w-10 md:h-10 rounded-full text-xl font-bold flex items-center justify-center hover:bg-white hover:scale-110 transition-all z-10"
-                            onClick={() => setActiveVideo(null)}
+                            onClick={handleCloseVideo}
                         >
                             ×
                         </button>
