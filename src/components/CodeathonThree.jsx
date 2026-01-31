@@ -2,20 +2,35 @@ import { Link } from 'react-router-dom';
 import feedbackRec from '../assets/feedback_rec.mp4';
 import feedbackPsr from '../assets/feedback_psr.mp4';
 import feedbackSathyabama from '../assets/feedback_sathyabama.mp4';
+import after12HoursImg from '../assets/d4e30253-3288-4711-8e33-5c87f001f05a.jpg';
+import firstPrizeWinnersImg from '../assets/1c31a91d-72cf-4135-b5e1-548a683df0dd.jpg';
 
 const CodeathonThree = () => {
-    const videos = [
+    const mediaItems = [
         {
+            type: 'video',
             title: "Feedback 1",
             src: feedbackRec
         },
         {
+            type: 'video',
             title: "Feedback 2",
             src: feedbackPsr
         },
         {
+            type: 'video',
             title: "Feedback 3",
             src: feedbackSathyabama
+        },
+        {
+            type: 'image',
+            title: "after 12 hours",
+            src: after12HoursImg
+        },
+        {
+            type: 'image',
+            title: "First prize winners",
+            src: firstPrizeWinnersImg
         }
     ];
 
@@ -41,18 +56,26 @@ const CodeathonThree = () => {
                     </Link>
                 </div>
 
-                {/* Videos Section */}
+                {/* Media Section */}
                 <div className="flex flex-wrap justify-center gap-8 mt-12 mb-16">
-                    {videos.map((video, index) => (
+                    {mediaItems.map((item, index) => (
                         <div key={index} className="flex flex-col items-center w-full md:w-[30%] min-w-[300px]">
                             <h2 className="text-base md:text-lg font-['Courier Prime'] font-bold text-[var(--primary-color)] text-center drop-shadow-sm tracking-wide leading-relaxed px-2 mb-4">
-                                {video.title}
+                                {item.title}
                             </h2>
                             <div className="w-full aspect-video border border-[var(--primary-color)] rounded-lg overflow-hidden shadow-[0_0_15px_rgba(200,0,0,0.3)] bg-black transition-transform hover:scale-105 duration-300">
-                                <video controls className="w-full h-full object-cover">
-                                    <source src={video.src} type="video/mp4" />
-                                    Your browser does not support the video tag.
-                                </video>
+                                {item.type === 'video' ? (
+                                    <video controls className="w-full h-full object-cover">
+                                        <source src={item.src} type="video/mp4" />
+                                        Your browser does not support the video tag.
+                                    </video>
+                                ) : (
+                                    <img
+                                        src={item.src}
+                                        alt={item.title}
+                                        className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-300"
+                                    />
+                                )}
                             </div>
                         </div>
                     ))}
