@@ -31,6 +31,21 @@ export const AudioProvider = ({ children }) => {
 
                 const decodedBuffer = await audioContext.decodeAudioData(arrayBuffer);
                 audioBufferRef.current = decodedBuffer;
+
+                // Auto-play attempt
+                try {
+                    const source = audioContext.createBufferSource();
+                    source.buffer = decodedBuffer;
+                    source.loop = true;
+                    source.connect(analyser);
+                    analyser.connect(audioContext.destination);
+                    source.start(0);
+                    sourceNodeRef.current = source;
+                    setIsPlaying(true);
+                } catch (e) {
+                    console.log("Auto-play blocked", e);
+                }
+
             } catch (error) {
                 console.error("Error loading audio:", error);
             }
@@ -44,6 +59,37 @@ export const AudioProvider = ({ children }) => {
             }
         };
     }, []);
+
+    // Unlock audio on first interaction if blocked
+    useEffect(() => {
+        const handleInteraction = async () => {
+            if (audioContextRef.current && audioContextRef.current.state === 'suspended') {
+                try {
+                    await audioContextRef.current.resume();
+                    if (!isPlaying && audioBufferRef.current && !sourceNodeRef.current) {
+                        try {
+                            // Re-trigger play logic if it wasn't started
+                            const source = audioContextRef.current.createBufferSource();
+                            source.buffer = audioBufferRef.current;
+                            source.loop = true;
+                            source.connect(analyserRef.current);
+                            analyserRef.current.connect(audioContextRef.current.destination);
+                            source.start(0);
+                            sourceNodeRef.current = source;
+                            setIsPlaying(true);
+                        } catch (e) {
+                            console.error("Play on interaction failed", e);
+                        }
+                    }
+                } catch (e) {
+                    console.error("Audio Context resume failed", e);
+                }
+            }
+        };
+
+        window.addEventListener('click', handleInteraction);
+        return () => window.removeEventListener('click', handleInteraction);
+    }, [isPlaying]);
 
     const toggleAudio = useCallback(async () => {
         if (!audioContextRef.current || !audioBufferRef.current) return;

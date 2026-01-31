@@ -834,10 +834,11 @@ footer {
 }
 
 .sponsor-card:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(200, 0, 0, 0.1);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 20px rgba(200, 0, 0, 0.4);
     color: #fff;
-    text-shadow: 0 0 5px #fff;
+    transform: scale(1.05);
 }
 
 /* Media Queries for Timeline */
