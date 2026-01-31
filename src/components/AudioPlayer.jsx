@@ -6,7 +6,7 @@ const AudioPlayer = () => {
     return (
         <button
             id="audio-btn"
-            className="audio-btn"
+            className="audio-btn hidden"
             aria-label={isPlaying ? "Mute Audio" : "Unmute Audio"}
             onClick={toggleAudio}
         >

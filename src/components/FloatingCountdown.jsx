@@ -3,7 +3,7 @@ import useCountdown from '../hooks/useCountdown';
 
 
 const FloatingCountdown = () => {
-    const timeLeft = useCountdown('March 17, 2026 09:00:00');
+    const timeLeft = useCountdown('March 10, 2026 09:00:00');
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
