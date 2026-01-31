@@ -1,7 +1,7 @@
 import useCountdown from '../hooks/useCountdown';
 
 const CountdownTimer = () => {
-    const timeLeft = useCountdown('March 17, 2026 09:00:00');
+    const timeLeft = useCountdown('March 10, 2026 09:00:00');
 
     return (
         <div className="relative flex items-center justify-center my-12 z-20 w-full max-w-4xl mx-auto">
