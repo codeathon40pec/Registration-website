@@ -5,10 +5,10 @@ const Hero = () => {
         <section id="hero" className="hero min-h-screen flex items-center justify-center text-center relative px-4 overflow-hidden">
             <div className="hero-content max-w-5xl mx-auto flex flex-col items-center justify-center relative z-30 gap-6">
                 <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6">
-                    <h1 className="strange-title text-3xl sm:text-6xl md:text-8xl font-black leading-tight tracking-wider" data-text="CODEATHON">
+                    <h1 className="strange-title text-4xl sm:text-8xl md:text-10xl font-black leading-tight tracking-wider" data-text="CODEATHON">
                         CODEATHON
                     </h1>
-                    <h1 className="strange-title text-3xl sm:text-6xl md:text-8xl font-black leading-tight text-[#cf0000] drop-shadow-[0_0_15px_rgba(207,0,0,0.8)]" data-text="4.O">
+                    <h1 className="strange-title text-4xl sm:text-8xl md:text-10xl font-black leading-tight text-[#cf0000] drop-shadow-[0_0_15px_rgba(207,0,0,0.8)]" data-text="4.O">
                         4.O
                     </h1>
                 </div>
