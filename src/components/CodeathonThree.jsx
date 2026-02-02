@@ -14,6 +14,7 @@ import { useAudio } from '../context/AudioContext';
 const CodeathonThree = () => {
     const { suspendAudio, resumeAudio } = useAudio();
     const videoRefs = useRef([]);
+    const containerRef = useRef(null);
 
     // Audio handled globally by App.jsx
 
@@ -91,18 +92,17 @@ const CodeathonThree = () => {
             if (video) video.pause();
         });
     };
-
     return (
-        <div className="min-h-screen bg-transparent text-white pt-24 pb-12 px-4 relative z-10">
-            <div className="container mx-auto">
+        <div ref={containerRef} className="min-h-screen bg-transparent text-white pt-32 pb-12 px-0 md:px-4 relative z-10">
+            <div className="w-full md:container md:mx-auto">
                 {/* Header */}
-                <div className="flex flex-row justify-between items-center mb-20 md:mb-24 border-b border-[var(--primary-color)] pb-10 gap-2">
-                    <h1 className="text-xl md:text-5xl font-['Butcherman'] text-[var(--primary-color)] drop-shadow-[0_0_10px_var(--primary-color)] text-left whitespace-nowrap">
+                <div className="w-full flex flex-row justify-between items-center mb-28 md:mb-32 border-b border-[var(--primary-color)] pb-4 md:pb-10 gap-2 px-3 md:px-0">
+                    <h1 className="text-2xl md:text-5xl font-['Butcherman'] text-[var(--primary-color)] drop-shadow-[0_0_10px_var(--primary-color)] text-left whitespace-nowrap leading-tight">
                         Codeathon 3.0
                     </h1>
                     <Link
                         to="/"
-                        className="px-3 py-2 md:px-6 md:py-2 border-2 border-[var(--primary-color)] text-[var(--primary-color)] font-['Butcherman'] text-xl tracking-widest uppercase rounded hover:bg-[var(--primary-color)] hover:text-white hover:shadow-[0_0_20px_var(--primary-color)] hover:scale-105 transition-all duration-300 bg-black/50 flex items-center gap-2"
+                        className="px-4 py-2 border-2 border-[var(--primary-color)] text-[var(--primary-color)] font-['Butcherman'] text-sm md:text-xl tracking-widest uppercase rounded hover:bg-[var(--primary-color)] hover:text-white hover:shadow-[0_0_20px_var(--primary-color)] hover:scale-105 transition-all duration-300 bg-black/50 flex items-center gap-2"
                     >
                         <span className="md:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -115,11 +115,11 @@ const CodeathonThree = () => {
                 </div>
 
                 {/* Media Section */}
-                <div className="flex flex-wrap justify-center gap-8 mt-12 mb-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 justify-items-center mt-12 mb-16">
                     {mediaItems.map((item, index) => (
-                        <div key={index} className="flex flex-col items-center w-full md:w-[30%] min-w-[280px]">
+                        <div key={index} className="flex flex-col items-center w-full max-w-[320px] md:max-w-[1024px] mx-auto">
                             <div className="h-16 flex items-center justify-center w-full mb-4">
-                                <h2 className="text-base md:text-lg font-['Courier Prime'] font-bold text-[var(--primary-color)] text-center drop-shadow-sm tracking-wide leading-relaxed px-2 uppercase">
+                                <h2 className="text-lg md:text-xl font-['Courier Prime'] font-bold text-[var(--primary-color)] text-center drop-shadow-sm tracking-wide leading-relaxed px-2 uppercase">
                                     {item.title}
                                 </h2>
                             </div>
