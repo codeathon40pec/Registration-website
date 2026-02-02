@@ -17,6 +17,7 @@ import CodeathonTwo from './components/CodeathonTwo';
 import CodeathonThree from './components/CodeathonThree';
 import FloatingCountdown from './components/FloatingCountdown';
 import { useEffect } from 'react';
+import { useAudio } from './context/AudioContext';
 
 // Wrapper to handle scroll-to-hash
 const ScrollToHashElement = () => {
@@ -38,7 +39,7 @@ function MainContent() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="relative z-30">
         <Hero />
         <About />
         <Rules />
@@ -54,10 +55,35 @@ function MainContent() {
   );
 }
 
+// Component to handle audio state based on current route
+const AudioRouteHandler = () => {
+  const location = useLocation();
+  // Safe check for useAudio in case it's used outside provider (shouldn't happen here)
+  const audioContext = useAudio ? useAudio() : null;
+
+  useEffect(() => {
+    if (!audioContext) return;
+
+    const { suspendAudio, resumeAudio } = audioContext;
+    const isRestrictedPage = location.pathname.includes('/codeathon');
+
+    if (isRestrictedPage) {
+      suspendAudio();
+    } else {
+      // Only resume if we are back on a safe page (Logic: Home page = safe)
+      // We rely on suspendAudio setting 'isBlocked=true' and resumeAudio setting 'isBlocked=false'
+      resumeAudio();
+    }
+  }, [location.pathname, audioContext?.suspendAudio, audioContext?.resumeAudio]);
+
+  return null;
+};
+
 function App() {
   return (
     <Router>
       {/* App Router */}
+      <AudioRouteHandler />
       <ScrollToHashElement />
       <BackgroundEffects />
       <Particles />

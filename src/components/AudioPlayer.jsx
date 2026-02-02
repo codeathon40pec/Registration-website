@@ -1,7 +1,12 @@
 import { useAudio } from '../context/AudioContext';
 
 const AudioPlayer = () => {
-    const { isPlaying, toggleAudio } = useAudio();
+    const audioContext = useAudio();
+
+    // Fail safe if context is missing
+    if (!audioContext) return null;
+
+    const { isPlaying, toggleAudio } = audioContext;
 
     return (
         <button

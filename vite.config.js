@@ -9,5 +9,5 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: process.env.VITE_BASE_PATH || "Codeathon4.Opec"
+  base: process.env.VITE_BASE_PATH || "/"
 })

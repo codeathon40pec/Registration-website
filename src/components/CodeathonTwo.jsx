@@ -1,8 +1,12 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { InstagramEmbed } from 'react-social-media-embed';
 import { Link } from 'react-router-dom';
+import { useAudio } from '../context/AudioContext';
 
 const CodeathonTwo = () => {
+    // Audio handled by App.jsx globally
+    // const { suspendAudio, resumeAudio } = useAudio();
+
     const socialLinks = [
         { url: "https://www.instagram.com/reel/C4lFT8Kx0Op/", title: "Theme Reveal" },
         { url: "https://www.instagram.com/p/C4abYNRxF4M/", title: "Poster" },
@@ -19,8 +23,8 @@ const CodeathonTwo = () => {
         <div className="min-h-screen bg-transparent text-white pt-24 pb-12 px-4 relative z-10">
             <div className="container mx-auto">
                 {/* Header */}
-                <div className="flex justify-between items-center mb-12 border-b border-[var(--primary-color)] pb-4">
-                    <h1 className="text-3xl md:text-5xl strange-title drop-shadow-[0_0_10px_var(--primary-color)]" data-text="Codeathon 2.0">
+                <div className="flex flex-row justify-between items-center mb-20 border-b border-[var(--primary-color)] pb-10 gap-2">
+                    <h1 className="text-xl md:text-5xl strange-title drop-shadow-[0_0_10px_var(--primary-color)] text-left whitespace-nowrap" data-text="Codeathon 2.0">
                         Codeathon 2.0
                     </h1>
                     <Link
@@ -45,8 +49,8 @@ const CodeathonTwo = () => {
                             <div className="mb-4 text-xl font-bold text-[var(--primary-color)] w-full text-center drop-shadow-[0_0_5px_var(--primary-color)] strange-title tracking-wider" data-text={item.title}>
                                 {item.title}
                             </div>
-                            <div className="w-full rounded-lg overflow-hidden border border-white/10 shadow-[0_0_15px_rgba(255,0,0,0.1)] hover:shadow-[0_0_25px_rgba(255,0,0,0.3)] transition-shadow duration-300 bg-black">
-                                <InstagramEmbed url={item.url} width={328} captioned />
+                            <div className="w-full rounded-lg overflow-hidden border border-white/10 shadow-[0_0_15px_rgba(255,0,0,0.1)] hover:shadow-[0_0_25px_rgba(255,0,0,0.3)] transition-shadow duration-300 bg-black flex justify-center">
+                                <InstagramEmbed url={item.url} width="100%" style={{ maxWidth: 328 }} captioned />
                             </div>
                         </div>
                     ))}

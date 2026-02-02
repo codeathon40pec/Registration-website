@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import feedbackRec from '../assets/feedback_rec.mp4';
 import feedbackPsr from '../assets/feedback_psr.mp4';
@@ -14,6 +14,10 @@ import { useAudio } from '../context/AudioContext';
 const CodeathonThree = () => {
     const { suspendAudio, resumeAudio } = useAudio();
     const videoRefs = useRef([]);
+
+    // Audio handled globally by App.jsx
+
+
 
     const mediaItems = [
         {
@@ -76,9 +80,9 @@ const CodeathonThree = () => {
     const handlePause = () => {
         // Only resume audio if ALL videos are paused
         const isAnyVideoPlaying = videoRefs.current.some(video => video && !video.paused && !video.ended);
-        if (!isAnyVideoPlaying) {
-            resumeAudio();
-        }
+        // if (!isAnyVideoPlaying) {
+        //     resumeAudio();
+        // }
     };
 
     const handleImageClick = () => {
@@ -92,8 +96,8 @@ const CodeathonThree = () => {
         <div className="min-h-screen bg-transparent text-white pt-24 pb-12 px-4 relative z-10">
             <div className="container mx-auto">
                 {/* Header */}
-                <div className="flex justify-between items-center mb-24 border-b border-[var(--primary-color)] pb-4">
-                    <h1 className="text-3xl md:text-5xl font-['Butcherman'] text-[var(--primary-color)] drop-shadow-[0_0_10px_var(--primary-color)]">
+                <div className="flex flex-row justify-between items-center mb-20 md:mb-24 border-b border-[var(--primary-color)] pb-10 gap-2">
+                    <h1 className="text-xl md:text-5xl font-['Butcherman'] text-[var(--primary-color)] drop-shadow-[0_0_10px_var(--primary-color)] text-left whitespace-nowrap">
                         Codeathon 3.0
                     </h1>
                     <Link
@@ -113,7 +117,7 @@ const CodeathonThree = () => {
                 {/* Media Section */}
                 <div className="flex flex-wrap justify-center gap-8 mt-12 mb-16">
                     {mediaItems.map((item, index) => (
-                        <div key={index} className="flex flex-col items-center w-full md:w-[30%] min-w-[300px]">
+                        <div key={index} className="flex flex-col items-center w-full md:w-[30%] min-w-[280px]">
                             <div className="h-16 flex items-center justify-center w-full mb-4">
                                 <h2 className="text-base md:text-lg font-['Courier Prime'] font-bold text-[var(--primary-color)] text-center drop-shadow-sm tracking-wide leading-relaxed px-2 uppercase">
                                     {item.title}

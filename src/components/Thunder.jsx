@@ -8,7 +8,7 @@ const Thunder = () => {
     const context = useAudio();
     if (!context) return null; // Logic to handle missing provider
 
-    const { isPlaying, getAudioData } = context;
+    const { isPlaying, getAudioData, isBlocked } = context;
     const [flashOpacity, setFlashOpacity] = useState(0);
     const lastFlashTimeRef = useRef(0);
     const audioRef = useRef(null);
@@ -26,6 +26,9 @@ const Thunder = () => {
     }, []);
 
     const triggerFlash = () => {
+        // If blocked (e.g. modal open), do NOTHING
+        if (isBlocked) return;
+
         // Visuals
         setFlashOpacity(1);
         setTimeout(() => setFlashOpacity(0.4), 50);
@@ -34,7 +37,7 @@ const Thunder = () => {
         setTimeout(() => setFlashOpacity(0.6), 250);
         setTimeout(() => setFlashOpacity(0), 400);
 
-        // Play Thunder Sound (ONLY if audio is enabled)
+        // Play Thunder Sound (ONLY if audio is enabled and not blocked)
         if (isPlaying && audioRef.current) {
             audioRef.current.currentTime = 0;
             audioRef.current.play().catch(() => { });

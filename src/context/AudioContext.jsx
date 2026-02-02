@@ -90,7 +90,8 @@ export const AudioProvider = ({ children }) => {
             hasInteractedRef.current = true;
 
             if (audioContextRef.current) {
-                if (audioContextRef.current.state === 'suspended') {
+                // ONLY unlock if we are not explicitly blocked by external media
+                if (audioContextRef.current.state === 'suspended' && !isMediaPlayingRef.current) {
                     try {
                         await audioContextRef.current.resume();
                     } catch (e) {
@@ -99,7 +100,8 @@ export const AudioProvider = ({ children }) => {
                 }
 
                 // If we have data but not playing, try playing now
-                if (!isPlaying && audioBufferRef.current && !sourceNodeRef.current) {
+                // Also check !isMediaPlayingRef.current here
+                if (!isPlaying && audioBufferRef.current && !sourceNodeRef.current && !isMediaPlayingRef.current) {
                     tryPlay(audioContextRef.current, audioBufferRef.current, analyserRef.current);
                 }
             }
@@ -132,8 +134,8 @@ export const AudioProvider = ({ children }) => {
                     }
                 }
             } else {
-                // User came back -> Resume ONLY if it was supposed to be playing
-                if (isPlaying && audioContextRef.current && audioContextRef.current.state === 'suspended') {
+                // User came back -> Resume ONLY if it was supposed to be playing AND NOT BLOCKED
+                if (isPlaying && audioContextRef.current && audioContextRef.current.state === 'suspended' && !isMediaPlayingRef.current) {
                     try {
                         await audioContextRef.current.resume();
                     } catch (e) {
@@ -154,7 +156,7 @@ export const AudioProvider = ({ children }) => {
         };
 
         const handleFocus = async () => {
-            if (isPlaying && audioContextRef.current && audioContextRef.current.state === 'suspended') {
+            if (isPlaying && audioContextRef.current && audioContextRef.current.state === 'suspended' && !isMediaPlayingRef.current) {
                 try {
                     await audioContextRef.current.resume();
                 } catch (e) { }
@@ -217,7 +219,12 @@ export const AudioProvider = ({ children }) => {
         return null;
     }, []);
 
+    // State to force re-render when blocked status changes
+    const [isBlocked, setIsBlocked] = useState(false);
+
     const suspendAudio = useCallback(async () => {
+        isMediaPlayingRef.current = true; // Mark as blocked by media
+        setIsBlocked(true);
         if (audioContextRef.current && audioContextRef.current.state === 'running') {
             try {
                 await audioContextRef.current.suspend();
@@ -228,6 +235,8 @@ export const AudioProvider = ({ children }) => {
     }, []);
 
     const resumeAudio = useCallback(async () => {
+        isMediaPlayingRef.current = false; // Unblock
+        setIsBlocked(false);
         if (isPlaying && audioContextRef.current && audioContextRef.current.state === 'suspended') {
             try {
                 await audioContextRef.current.resume();
@@ -238,7 +247,7 @@ export const AudioProvider = ({ children }) => {
     }, [isPlaying]);
 
     return (
-        <AudioContext.Provider value={{ isPlaying, toggleAudio, getAudioData, suspendAudio, resumeAudio }}>
+        <AudioContext.Provider value={{ isPlaying, toggleAudio, getAudioData, suspendAudio, resumeAudio, isBlocked }}>
             {children}
         </AudioContext.Provider>
     );
