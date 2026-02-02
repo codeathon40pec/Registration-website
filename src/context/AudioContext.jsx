@@ -17,6 +17,8 @@ export const AudioProvider = ({ children }) => {
     const isMediaPlayingRef = useRef(false); // Track if external media is blocking audio
 
     useEffect(() => {
+        let isMounted = true;
+
         // Init context immediately to be ready for interaction unlocks
         const AudioContextClass = window.AudioContext || window.webkitAudioContext;
         const audioContext = new AudioContextClass();
@@ -35,8 +37,12 @@ export const AudioProvider = ({ children }) => {
                 const response = await fetch(themeAudio);
                 const arrayBuffer = await response.arrayBuffer();
 
+                if (!isMounted) return;
+
                 // Decode
                 const decodedBuffer = await audioContext.decodeAudioData(arrayBuffer);
+                if (!isMounted) return;
+
                 audioBufferRef.current = decodedBuffer;
 
                 // Check if user already interacted while we were loading
@@ -48,13 +54,23 @@ export const AudioProvider = ({ children }) => {
                 }
 
             } catch (error) {
-                console.error("Error loading audio:", error);
+                if (isMounted) console.error("Error loading audio:", error);
             }
         };
 
         loadAudio();
 
         return () => {
+            isMounted = false;
+            if (sourceNodeRef.current) {
+                try {
+                    sourceNodeRef.current.stop();
+                    sourceNodeRef.current.disconnect();
+                    sourceNodeRef.current = null;
+                } catch (e) {
+                    // Ignore errors if already stopped
+                }
+            }
             if (audioContextRef.current) {
                 audioContextRef.current.close();
             }

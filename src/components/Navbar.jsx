@@ -34,7 +34,7 @@ const Navbar = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={() => setIsMenuOpen(false)}
-                            className="border border-[var(--primary-color)] text-[var(--primary-color)] px-6 py-2 rounded md:px-4 md:py-1 hover:bg-[var(--primary-color)] hover:text-black transition-all uppercase font-bold tracking-wider shadow-[0_0_10px_var(--primary-color)] text-xl md:text-sm lg:text-base"
+                            className="border border-[var(--primary-color)] text-[var(--primary-color)] px-4 py-2 rounded md:px-4 md:py-1 hover:bg-[var(--primary-color)] hover:text-black transition-all uppercase font-bold tracking-wider shadow-[0_0_10px_var(--primary-color)] text-xl md:text-sm lg:text-base"
                         >
                             Register
                         </a>
@@ -46,7 +46,7 @@ const Navbar = () => {
                 <AudioPlayer />
                 {/* Mobile Menu Toggle */}
                 <button
-                    className="md:hidden text-[var(--primary-color)] text-2xl focus:outline-none z-50 relative"
+                    className="md:hidden text-[var(--primary-color)] text-3xl focus:outline-none z-50 relative"
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                 >
                     {isMenuOpen ? '✕' : '☰'}
