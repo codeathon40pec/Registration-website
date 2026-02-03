@@ -93,11 +93,11 @@ const CodeathonThree = () => {
         });
     };
     return (
-        <div ref={containerRef} className="min-h-screen bg-transparent text-white pt-32 pb-12 px-0 md:px-4 relative z-10">
+        <div ref={containerRef} className="min-h-screen bg-transparent text-white pt-24 pb-12 px-6 md:px-20 relative z-10">
             <div className="w-full md:container md:mx-auto">
                 {/* Header */}
-                <div className="w-full flex flex-row justify-between items-center mb-28 md:mb-32 border-b border-[var(--primary-color)] pb-4 md:pb-10 gap-2 px-3 md:px-0">
-                    <h1 className="text-2xl md:text-5xl font-['Butcherman'] text-[var(--primary-color)] drop-shadow-[0_0_10px_var(--primary-color)] text-left whitespace-nowrap leading-tight">
+                <div className="w-full flex flex-row justify-between items-center mb-16 md:mb-24 border-b border-[var(--primary-color)] pb-4 md:pb-6 gap-2">
+                    <h1 className="text-xl md:text-5xl font-['Butcherman'] text-[var(--primary-color)] drop-shadow-[0_0_10px_var(--primary-color)] text-left whitespace-nowrap leading-tight">
                         Codeathon 3.0
                     </h1>
                     <Link
@@ -115,7 +115,7 @@ const CodeathonThree = () => {
                 </div>
 
                 {/* Media Section */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 justify-items-center mt-12 mb-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 justify-items-center mt-8 md:mt-16 mb-16">
                     {mediaItems.map((item, index) => (
                         <div key={index} className="flex flex-col items-center w-full max-w-[320px] md:max-w-[1024px] mx-auto">
                             <div className="h-16 flex items-center justify-center w-full mb-4">
