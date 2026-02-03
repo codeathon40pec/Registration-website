@@ -1,9 +1,19 @@
 import CountdownTimer from './CountdownTimer';
 
+
 const Hero = () => {
     return (
         <section id="hero" className="hero min-h-screen flex items-center justify-center text-center relative px-4 overflow-hidden">
-            <div className="hero-content max-w-5xl mx-auto flex flex-col items-center justify-center relative z-30 gap-6">
+            <div className="hero-content w-full max-w-[1400px] mx-auto flex flex-col items-center justify-center relative z-30 gap-6">
+                <div className="w-full flex justify-center items-center gap-4 mb-4 md:mb-8">
+                    {/* Department Name - Horizontal Layout */}
+                    <div className="flex items-center mt-2 md:mt-0">
+                        <p className="text-[#b30000] text-base sm:text-2xl md:text-3xl lg:text-5xl font-bold tracking-widest uppercase leading-tight text-center px-2" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+                            Department of CSE and CSBS
+                        </p>
+                    </div>
+                </div>
+
                 <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6">
                     <h1 className="strange-title text-4xl sm:text-8xl md:text-10xl font-black leading-tight tracking-wider" data-text="CODEATHON">
                         CODEATHON

@@ -1,5 +1,6 @@
 import partnerImage from '../assets/images.jpg';
 import downloadImage from '../assets/download.png';
+import benhiveImage from '../assets/benhive.jpeg';
 
 const Sponsors = () => {
     return (
@@ -12,6 +13,9 @@ const Sponsors = () => {
                     </div>
                     <div className="sponsor-card">
                         <img src={downloadImage} alt="Partner 2" className="w-full h-full object-contain" />
+                    </div>
+                    <div className="sponsor-card">
+                        <img src={benhiveImage} alt="Partner 3" className="w-full h-full object-contain" />
                     </div>
                     {/* <div className="sponsor-card">Derry Public Works</div>
                     <div className="sponsor-card">Aladdin's Castle Arcade</div>
