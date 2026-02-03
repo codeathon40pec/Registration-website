@@ -6,7 +6,7 @@ const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
-        <header className="fixed top-0 w-full z-50 bg-black/70 backdrop-blur-md px-4 py-3 md:px-12 md:py-5 flex justify-between items-center border-b border-white/10">
+        <header className="fixed top-0 w-full z-50 bg-black/70 backdrop-blur-md px-4 py-2 md:px-12 md:py-5 flex justify-between items-center border-b border-white/10">
             <div className="flex items-center gap-3">
                 <img
                     src={logo}
@@ -14,10 +14,10 @@ const Navbar = () => {
                     className="w-10 md:w-16 opacity-90 drop-shadow-[0_0_5px_rgba(200,0,0,0.6)]"
                 />
                 <div className="flex flex-col items-start leading-none">
-                    <span className="text-[var(--primary-color)] text-xs md:text-base font-bold tracking-wide uppercase" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+                    <span className="text-white text-xs md:text-base font-bold tracking-wide uppercase" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
                         PRATHYUSHA
                     </span>
-                    <span className="text-[var(--primary-color)] text-[10px] md:text-sm font-bold tracking-wider uppercase" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+                    <span className="text-white text-[10px] md:text-sm font-bold tracking-wider uppercase" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
                         ENGINEERING COLLEGE
                     </span>
                     <span className="text-gray-400 text-[8px] md:text-[10px] italic tracking-widest opacity-80" style={{ fontFamily: '"Times New Roman", Times, serif' }}>

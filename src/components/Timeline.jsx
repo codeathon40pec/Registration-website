@@ -1,13 +1,15 @@
 const Timeline = () => {
     const events = [
-        { time: "March 10, 09:00 AM", title: "The Sewer Opens", desc: "Registration & Inauguration" },
-        { time: "March 10, 10:00 AM", title: "Hack Begins", desc: "Problem statements revealed. Enter the Deadlights." },
-        { time: "March 10, 01:30 PM", title: "Feast on Fear", desc: "Lunch Break. Fuel your nightmares." },
-        { time: "March 10, 05:00 PM", title: "Georgie's Guidance", desc: "Mentoring Session 1. Don't take balloons from strangers." },
-        { time: "March 10, 08:30 PM", title: "Derry Dinner", desc: "Dinner. You'll float too if you don't eat." },
-        { time: "March 11, 01:00 AM", title: "Midnight Float", desc: "Midnight Snacks & Fun. Red balloons everywhere." },
-        { time: "March 11, 08:00 AM", title: "The Last Meal", desc: "Breakfast. Final energy boost before the end." },
-        { time: "March 11, 10:00 AM", title: "Hack Ends", desc: "Survive the 24 hours. Submit your prototype." },
+        { time: "March 10, 07:00 AM", title: "The Arrival", desc: "Registration" },
+        { time: "March 10, 09:00 AM", title: "The Awakening", desc: "Inauguration" },
+        { time: "March 10, 10:30 AM", title: "The Revelation", desc: "Problem Statement Reveal" },
+        { time: "March 10, 12:30 PM", title: "First Encounter", desc: "Round 1 Evaluation" },
+        { time: "March 10, 04:00 PM", title: "Survival Fuel", desc: "Refreshment" },
+        { time: "March 10, 05:00 PM", title: "The Second Wave", desc: "Round 2 Evaluation" },
+        { time: "March 10, 11:00 PM", title: "Midnight Feast", desc: "Refreshment" },
+        { time: "March 11, 07:00 AM", title: "The Final Test", desc: "Round 3 Evaluation" },
+        { time: "March 11, 10:00 AM", title: "The End is Nigh", desc: "Codeathon Ends" },
+        { time: "March 11, 10:30 AM", title: "The Aftermath", desc: "Valedictory" },
     ];
 
     return (
