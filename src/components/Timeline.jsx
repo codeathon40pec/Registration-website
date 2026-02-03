@@ -2,7 +2,7 @@ const Timeline = () => {
     const events = [
         { time: "March 10, 07:00 AM", title: "The Arrival", desc: "Registration" },
         { time: "March 10, 09:00 AM", title: "The Awakening", desc: "Inauguration" },
-        { time: "March 10, 10:30 AM", title: "The Revelation", desc: "Problem Statement Reveal" },
+        { time: "March 10, 10:00 AM", title: "The Revelation", desc: "Problem Statement Reveal" },
         { time: "March 10, 12:30 PM", title: "First Encounter", desc: "Round 1 Evaluation" },
         { time: "March 10, 04:00 PM", title: "Survival Fuel", desc: "Refreshment" },
         { time: "March 10, 05:00 PM", title: "The Second Wave", desc: "Round 2 Evaluation" },
