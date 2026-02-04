@@ -134,15 +134,12 @@ export const AudioProvider = ({ children }) => {
         };
     }, [isPlaying]);
 
-    // Handle Page Visibility (Tab Switch) & Focus
+    // Handle Page Visibility (Tab Switch)
     useEffect(() => {
         const handleVisibilityChange = async () => {
-            const shouldSuspend = document.hidden;
-            // Also check document.visibilityState if needed, but hidden is standard
-
-            if (shouldSuspend) {
+            if (document.hidden) {
                 // User switched tabs or minimized -> Suspend Audio
-                if (audioContextRef.current && audioContextRef.current.state === 'running') {
+                if (audioContextRef.current) {
                     try {
                         await audioContextRef.current.suspend();
                     } catch (e) {
@@ -151,7 +148,8 @@ export const AudioProvider = ({ children }) => {
                 }
             } else {
                 // User came back -> Resume ONLY if it was supposed to be playing AND NOT BLOCKED
-                if (isPlaying && audioContextRef.current && audioContextRef.current.state === 'suspended' && !isMediaPlayingRef.current) {
+                // We remove state check 'suspended' to be more robust, just try resume if isPlaying is true.
+                if (isPlaying && audioContextRef.current && !isMediaPlayingRef.current) {
                     try {
                         await audioContextRef.current.resume();
                     } catch (e) {
@@ -161,32 +159,21 @@ export const AudioProvider = ({ children }) => {
             }
         };
 
-        const handleBlur = async () => {
-            // Optional: if user clicks URL bar or another window, pause.
-            // This is stricter than visibilityChange.
-            if (audioContextRef.current && audioContextRef.current.state === 'running') {
+        // Redundant to visibilityChange for backgrounding, but 'pagehide' helps on some mobile browsers
+        const handlePageHide = async () => {
+            if (audioContextRef.current) {
                 try {
                     await audioContextRef.current.suspend();
                 } catch (e) { }
             }
         };
 
-        const handleFocus = async () => {
-            if (isPlaying && audioContextRef.current && audioContextRef.current.state === 'suspended' && !isMediaPlayingRef.current) {
-                try {
-                    await audioContextRef.current.resume();
-                } catch (e) { }
-            }
-        };
-
         document.addEventListener('visibilitychange', handleVisibilityChange);
-        window.addEventListener('blur', handleBlur);
-        window.addEventListener('focus', handleFocus);
+        window.addEventListener('pagehide', handlePageHide);
 
         return () => {
             document.removeEventListener('visibilitychange', handleVisibilityChange);
-            window.removeEventListener('blur', handleBlur);
-            window.removeEventListener('focus', handleFocus);
+            window.removeEventListener('pagehide', handlePageHide);
         };
     }, [isPlaying]);
 
