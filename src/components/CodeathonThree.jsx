@@ -102,7 +102,7 @@ const CodeathonThree = () => {
                     </h1>
                     <Link
                         to="/"
-                        className="px-4 py-2 border-2 border-[var(--primary-color)] text-[var(--primary-color)] font-['Butcherman'] text-sm md:text-xl tracking-widest uppercase rounded hover:bg-[var(--primary-color)] hover:text-white hover:shadow-[0_0_20px_var(--primary-color)] hover:scale-105 transition-all duration-300 bg-black/50 flex items-center gap-2"
+                        className="px-6 py-3 border-2 border-[var(--primary-color)] text-[var(--primary-color)] font-['Butcherman'] text-sm md:text-xl tracking-widest uppercase rounded hover:bg-[var(--primary-color)] hover:text-white hover:shadow-[0_0_20px_var(--primary-color)] hover:scale-105 transition-all duration-300 bg-black/50 flex items-center gap-2"
                     >
                         <span className="md:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

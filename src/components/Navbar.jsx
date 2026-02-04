@@ -6,7 +6,7 @@ const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
-        <header className="fixed top-0 w-full z-50 bg-black/70 backdrop-blur-md px-4 py-2 md:px-12 md:py-5 flex justify-between items-center border-b border-white/10">
+        <header className="fixed top-0 w-full z-50 bg-black/70 backdrop-blur-md p-[30px] md:px-12 md:py-5 flex justify-between items-center border-b border-white/10">
             <div className="flex items-center gap-3">
                 <img
                     src={logo}
