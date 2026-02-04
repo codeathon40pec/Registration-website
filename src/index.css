@@ -367,6 +367,10 @@ h3,
     font-family: var(--font-dripping);
 }
 
+.font-serif-logo {
+    font-family: "Times New Roman", Times, serif;
+}
+
 .audio-btn {
     background: none;
     border: 1px solid var(--primary-color);

@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 import { useAudio } from '../context/AudioContext';
-import thunderSound from '../assets/thunder.mp3';
 import silhouetteImg from '../assets/pngkey.com-model-silhouette-png-8795509.png';
 
 const Thunder = () => {

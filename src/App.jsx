@@ -65,14 +65,12 @@ const AudioRouteHandler = () => {
     if (!audioContext) return;
 
     const { suspendAudio, resumeAudio } = audioContext;
-    const isRestrictedPage = location.pathname.includes('/codeathon');
+    const isHomePage = location.pathname === '/';
 
-    if (isRestrictedPage) {
-      suspendAudio();
-    } else {
-      // Only resume if we are back on a safe page (Logic: Home page = safe)
-      // We rely on suspendAudio setting 'isBlocked=true' and resumeAudio setting 'isBlocked=false'
+    if (isHomePage) {
       resumeAudio();
+    } else {
+      suspendAudio();
     }
   }, [location.pathname, audioContext?.suspendAudio, audioContext?.resumeAudio]);
 
