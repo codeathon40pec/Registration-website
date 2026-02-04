@@ -45,7 +45,7 @@ body {
 
 .particle {
     position: absolute;
-    bottom: -50px;
+    bottom: -150px;
     width: 30px;
     height: 40px;
     background-image: url('./assets/red_balloon-removebg-preview.png');
