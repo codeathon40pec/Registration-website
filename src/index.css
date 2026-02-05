@@ -547,6 +547,28 @@ footer {
     color: var(--primary-color);
 }
 
+.footer-contact {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.footer-contact a {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-contact a:hover {
+    transform: scale(1.2) translateY(-5px);
+    color: #fff;
+    filter: drop-shadow(0 0 10px var(--primary-color));
+}
+
 /* Animations */
 @keyframes flicker-red {
 

@@ -6,7 +6,7 @@ import Rules from './components/Rules';
 import Timeline from './components/Timeline';
 import Prizes from './components/Prizes';
 import Gallery from './components/Gallery';
-import Team from './components/Team';
+import CoreCrew from './components/Team';
 import Partners from './components/Partners';
 import Register from './components/Register';
 import Footer from './components/Footer';
@@ -46,7 +46,7 @@ function MainContent() {
         <Timeline />
         <Prizes />
         <Gallery />
-        <Team />
+        <CoreCrew />
         <Partners />
         <Register />
       </main>

@@ -3,7 +3,7 @@ import googleLogo from '../assets/GOOGLE.png';
 import paceLogo from '../assets/PACE.png';
 import scopeLogo from '../assets/SCOPE.png';
 
-const Team = () => {
+const CoreCrew = () => {
     const organizers = [
         { name: "PACE", logo: paceLogo },
         { name: "GSA Club", logo: googleLogo },
@@ -12,7 +12,7 @@ const Team = () => {
     ];
 
     return (
-        <section id="team" className="section team-section relative z-20">
+        <section id="core-crew" className="section core-crew-section relative z-20">
             <div className="container">
                 <h2 className="section-title">Core-Crew(Organizers)</h2>
                 <div className="organizers-grid">
@@ -29,4 +29,4 @@ const Team = () => {
         </section>
     );
 };
-export default Team;
+export default CoreCrew;

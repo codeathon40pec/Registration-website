@@ -17,13 +17,10 @@ const Partners = () => {
                     <div className="partner-card">
                         <img src={benhiveImage} alt="Partner 3" className="w-full h-full object-contain" />
                     </div>
-                    {/* <div className="sponsor-card">Derry Public Works</div>
-                    <div className="sponsor-card">Aladdin's Castle Arcade</div>
-                    <div className="sponsor-card">Quality Meats</div>
-                    <div className="sponsor-card">Derry Public Library</div> */}
                 </div>
             </div>
         </section>
     );
 };
+
 export default Partners;
