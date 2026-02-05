@@ -8,10 +8,10 @@ const Footer = () => {
                     <a href="mailto:codeathon4.0pec@gmail.com" aria-label="Email">
                         <FaEnvelope />
                     </a>
-                    <a href="https://instagram.com/codeathon_pec" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <a href="https://www.instagram.com/codeathon.pec?igsh=NnFzanJ4OTI4Z2Vv" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                         <FaInstagram />
                     </a>
-                    <a href="tel:+911234567890" aria-label="Phone">
+                    <a href="tel:+918438849180" aria-label="Phone">
                         <FaPhone />
                     </a>
                 </div>

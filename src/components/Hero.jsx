@@ -33,12 +33,12 @@ const Hero = () => {
                         </h1>
                     </div>
 
-                    <p className="text-[var(--primary-color)] text-base sm:text-xl md:text-2xl font-bold tracking-[2px] uppercase drop-shadow-[0_0_5px_rgba(200,0,0,0.5)] text-center">
+                    <p className="text-[var(--primary-color)] text-base sm:text-2xl md:text-3xl font-bold tracking-[4px] uppercase drop-shadow-[0_0_5px_rgba(180,0,0,0.5)] text-center">
                         National Level 24-Hours Codeathon
                     </p>
 
-                    <p className="text-[#cf0000] text-lg sm:text-2xl font-bold tracking-widest uppercase mb-8" style={{ fontFamily: '"Courier New", monospace' }}>
-                        March 10th - 11th, 2026 | 24 Hours
+                    <p className="text-[#cf0000] text-lg sm:text-2xl font-bold tracking-widest uppercase mb-16" style={{ fontFamily: '"Courier New", monospace' }}>
+                        March 10th - 11th, 2026
                     </p>
 
                     <CountdownTimer />
@@ -50,7 +50,7 @@ const Hero = () => {
                             <span className="relative text-[#cf0000] group-hover:text-white tracking-widest uppercase text-xl">Register Now</span>
                         </a>
                     </div>*/}
-                    <AnimatedSection id="register" className="section register !pt-0 -mt-4">
+                    <AnimatedSection id="register" className="section register !pt-10 -mt-10">
                         <div className="container">
                             <div className="flex flex-col items-center gap-4">
                                 <p className="text-[#cf0000] strange-title text-xl md:text-3xl tracking-widest animate-pulse drop-shadow-[0_0_10px_rgba(207,0,0,0.8)]">

@@ -64,7 +64,7 @@ const Gallery = () => {
                         >
                             ×
                         </button>
-                        <h3 className="text-white font-['Butcherman'] text-xl md:text-3xl mb-4 text-center drop-shadow-[0_0_5px_rgba(255,255,255,0.8)]">{activeVideo.title}</h3>
+                        <h3 className="text-white font-['Butcherman'] text-xl md:text-3xl mb-4 text-center drop-shadow-[0_0_5px_rgba(180,180,180,0.8)]">{activeVideo.title}</h3>
                         <div className="relative w-full aspect-video rounded overflow-hidden border border-white/10">
                             <iframe
                                 className="w-full h-full"
