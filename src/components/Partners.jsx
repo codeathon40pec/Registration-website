@@ -13,14 +13,7 @@ const Partners = () => {
                     <div className="partner-card">
                         <img src="https://res.cloudinary.com/dvvuhiora/image/upload/v1770284102/f3f8ywfofgbf5yaseooa.jpg" alt="Partner 3" className="w-full h-full object-contain" />
                     </div>
-<<<<<<< HEAD:src/components/Partner.jsx
 
-                    {/* <div className="partner-card">Derry Public Works</div>
-                    <div className="partner-card">Aladdin's Castle Arcade</div>
-                    <div className="partner-card">Quality Meats</div>
-                    <div className="partner-card">Derry Public Library</div> */}
-=======
->>>>>>> 58458ce5d377336c4e35fa88c02c0528e2787634:src/components/Partners.jsx
                 </div>
             </div>
         </section>
