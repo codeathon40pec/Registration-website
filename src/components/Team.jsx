@@ -14,7 +14,7 @@ const Team = () => {
     return (
         <section id="team" className="section team-section relative z-20">
             <div className="container">
-                <h2 className="section-title">The Team (Organizers)</h2>
+                <h2 className="section-title">Core-Crew(Organizers)</h2>
                 <div className="organizers-grid">
                     {organizers.map((org, index) => (
                         <div key={index} className="organizer-card">

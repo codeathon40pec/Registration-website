@@ -7,7 +7,7 @@ import Timeline from './components/Timeline';
 import Prizes from './components/Prizes';
 import Gallery from './components/Gallery';
 import Team from './components/Team';
-import Sponsors from './components/Sponsors';
+import Partners from './components/Partners';
 import Register from './components/Register';
 import Footer from './components/Footer';
 import Particles from './components/Particles';
@@ -47,7 +47,7 @@ function MainContent() {
         <Prizes />
         <Gallery />
         <Team />
-        <Sponsors />
+        <Partners />
         <Register />
       </main>
       <Footer />
