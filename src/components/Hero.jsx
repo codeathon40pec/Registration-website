@@ -8,7 +8,7 @@ const Hero = () => {
                 <div className="w-full flex justify-center items-center gap-4 mb-4 md:mb-6">
                     {/* Department Name - Responsive Layout */}
                     <div className="flex items-center mt-4 md:mt-0">
-                        <p className="text-white text-sm sm:text-lg md:text-xl lg:text-2xl font-bold tracking-wider uppercase leading-snug text-center px-2 max-w-full" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+                        <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold tracking-wider uppercase leading-snug text-center px-2 max-w-full !text-white" style={{ fontFamily: '"Nosifer", cursive' }}>
                             <span className="md:hidden">
                                 Department of <br />
                                 Computer Science and Engineering <br />
@@ -23,7 +23,7 @@ const Hero = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col items-center justify-center gap-2">
+                <div className="flex flex-col items-center justify-center gap-8">
                     <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6">
                         <h1 className="strange-title text-4xl sm:text-8xl md:text-10xl font-black leading-tight tracking-wider" data-text="CODEATHON">
                             CODEATHON

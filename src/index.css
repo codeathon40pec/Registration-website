@@ -535,6 +535,28 @@ footer {
     box-shadow: 0 -5px 20px rgba(200, 0, 0, 0.1);
 }
 
+.footer-contact {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.footer-contact a {
+    color: #888;
+    font-size: 1.8rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-contact a:hover {
+    color: var(--primary-color);
+    transform: scale(1.2) translateY(-3px);
+    filter: drop-shadow(0 0 10px var(--primary-color));
+}
+
 .footer-dept {
     font-size: 0.8rem;
     margin-top: 10px;

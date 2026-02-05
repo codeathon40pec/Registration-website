@@ -1,14 +1,9 @@
-import acmLogo from '../assets/ACM.png';
-import googleLogo from '../assets/GOOGLE.png';
-import paceLogo from '../assets/PACE.png';
-import scopeLogo from '../assets/SCOPE.png';
-
 const CoreCrew = () => {
     const organizers = [
-        { name: "PACE", logo: paceLogo },
-        { name: "GSA Club", logo: googleLogo },
-        { name: "ACM", logo: acmLogo },
-        { name: "SCOPE", logo: scopeLogo }
+        { name: "PACE", logo: "https://res.cloudinary.com/dvvuhiora/image/upload/v1770281600/gbrvxm0vpiv5sc3iwwyb.jpg" },
+        { name: "GSA Club", logo: "https://res.cloudinary.com/dvvuhiora/image/upload/v1770281831/o4xdg8em520yf1mwrpza.jpg" },
+        { name: "ACM", logo: "https://res.cloudinary.com/dvvuhiora/image/upload/v1770281831/o4xdg8em520yf1mwrpza.jpg" },
+        { name: "SCOPE", logo: "https://res.cloudinary.com/dvvuhiora/image/upload/v1770281685/wrpodr9ydxsjuzsjp4hr.jpg" }
     ];
 
     return (
@@ -18,9 +13,11 @@ const CoreCrew = () => {
                 <div className="organizers-grid">
                     {organizers.map((org, index) => (
                         <div key={index} className="organizer-card">
-                            <div className="organizer-logo-wrapper">
-                                <img src={org.logo} alt={`${org.name} Logo`} className="organizer-logo" />
-                            </div>
+                            {org.logo && (
+                                <div className="organizer-logo-wrapper">
+                                    <img src={org.logo} alt={`${org.name} Logo`} className="organizer-logo" />
+                                </div>
+                            )}
                             <h3 className="organizer-name">{org.name}</h3>
                         </div>
                     ))}
