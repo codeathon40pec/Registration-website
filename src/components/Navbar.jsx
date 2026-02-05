@@ -33,8 +33,8 @@ const Navbar = () => {
                     : 'hidden'
                     } md:flex md:relative md:flex-row md:bg-transparent md:w-auto md:h-auto md:gap-8 md:items-center list-none`}
                 >
-                    {['Hero', 'About', 'Rules', 'Timeline', 'Prizes', 'Gallery', 'Team', 'Sponsors'].map((section) => (
-                        <li key={section} className={(section === 'Team' || section === 'Sponsors') ? 'hidden md:block' : ''}>
+                    {['Hero', 'About', 'Rules', 'Timeline', 'Prizes', 'Gallery', 'Core-Crew', 'Partners'].map((section) => (
+                        <li key={section} className={(section === 'Core-Crew' || section === 'Partners') ? 'hidden md:block' : ''}>
                             <a
                                 href={`#${section.toLowerCase()}`}
                                 onClick={() => setIsMenuOpen(false)}

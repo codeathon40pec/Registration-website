@@ -6,8 +6,8 @@ import Rules from './components/Rules';
 import Timeline from './components/Timeline';
 import Prizes from './components/Prizes';
 import Gallery from './components/Gallery';
-import Team from './components/Team';
-import Sponsors from './components/Sponsors';
+import CoreCrew from './components/CoreCrew';
+import Partners from './components/Partner';
 import Register from './components/Register';
 import Footer from './components/Footer';
 import Particles from './components/Particles';
@@ -46,8 +46,8 @@ function MainContent() {
         <Timeline />
         <Prizes />
         <Gallery />
-        <Team />
-        <Sponsors />
+        <CoreCrew />
+        <Partners />
         <Register />
       </main>
       <Footer />
