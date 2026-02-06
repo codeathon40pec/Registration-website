@@ -3,12 +3,21 @@ import AnimatedSection from './AnimatedSection';
 
 const Hero = () => {
     return (
-        <section id="hero" className="hero min-h-screen flex items-start justify-center text-center relative px-4 overflow-hidden" style={{ paddingTop: '80px' }}>
+        <section id="hero" className="hero min-h-screen flex items-start justify-center text-center relative px-4 overflow-hidden" style={{ paddingTop: '60px' }}>
             <div className="hero-content w-full max-w-[1400px] mx-auto flex flex-col items-center justify-center relative z-30 gap-8">
                 <div className="w-full flex justify-center items-center gap-4 mb-4 md:mb-6">
                     {/* Department Name - Responsive Layout */}
                     <div className="flex items-center mt-4 md:mt-0">
-                        <div className="mt-8 md:mt-12 text-lg sm:text-2xl md:text-3xl lg:text-4xl font-nosifer text-gray-200 tracking-wider leading-loose drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]">
+                        {/* Mobile View */}
+                        <div className="md:hidden mt-8 text-lg font-times-new-roman text-gray-200 tracking-wider leading-relaxed drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]">
+                            Department Of <br />
+                            Computer Science And Engineering <br />
+                            <span className="block my-2 text-xl text-pennywise-red">&</span>
+                            Computer Science / Business System
+                        </div>
+
+                        {/* Desktop View */}
+                        <div className="hidden md:block mt-8 md:mt-10 text-lg sm:text-xl md:text-2xl lg:text-3xl font-times-new-roman text-gray-200 tracking-wider leading-loose drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]">
                             DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING
                             <span className="block my-4 text-xl md:text-2xl text-pennywise-red">&</span>
                             COMPUTER SCIENCE AND BUSINESS SYSTEMS

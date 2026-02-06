@@ -387,6 +387,10 @@ h3,
     font-family: "Times New Roman", Times, serif;
 }
 
+.font-times-new-roman {
+    font-family: "Times New Roman", Times, serif;
+}
+
 .audio-btn {
     background: none;
     border: 1px solid var(--primary-color);
