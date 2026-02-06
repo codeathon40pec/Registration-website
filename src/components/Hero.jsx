@@ -8,19 +8,11 @@ const Hero = () => {
                 <div className="w-full flex justify-center items-center gap-4 mb-4 md:mb-6">
                     {/* Department Name - Responsive Layout */}
                     <div className="flex items-center mt-4 md:mt-0">
-                        <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold tracking-wider uppercase leading-snug text-center px-2 max-w-full !text-white animate-fade-in-up hover:scale-105 transition-transform duration-300" style={{ fontFamily: '"Nosifer", cursive' }}>
-                            <span className="md:hidden">
-                                Department of <br />
-                                Computer Science and Engineering <br />
-                                & <br />
-                                Computer Science / Business Systems
-                            </span>
-                            <span className="hidden md:block">
-                                Department of Computer Science and Engineering <br />
-                                & <br />
-                                Computer Science and Business Systems
-                            </span>
-                        </p>
+                        <div className="mt-8 md:mt-12 text-lg sm:text-2xl md:text-3xl lg:text-4xl font-nosifer text-gray-200 tracking-wider leading-loose drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]">
+                            DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING
+                            <span className="block my-4 text-xl md:text-2xl text-pennywise-red">&</span>
+                            COMPUTER SCIENCE AND BUSINESS SYSTEMS
+                        </div>
                     </div>
                 </div>
 

@@ -13,6 +13,9 @@ const Partners = () => {
                     <div className="partner-card">
                         <img src="https://res.cloudinary.com/dvvuhiora/image/upload/v1770284102/f3f8ywfofgbf5yaseooa.jpg" alt="Partner 3" className="w-full h-full object-contain" />
                     </div>
+                    <div className="partner-card">
+                        <img src="https://res.cloudinary.com/dvvuhiora/image/upload/v1770365287/cxc5hnzpqdapoo9bvyud.jpg" alt="Partner 4" className="w-full h-full object-contain" />
+                    </div>
 
                 </div>
             </div>
