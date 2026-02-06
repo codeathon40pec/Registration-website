@@ -5,7 +5,7 @@ const Footer = () => {
         <footer>
             <div className="container">
                 <div className="footer-contact">
-                    <a href="mailto:codeathon4.0pec@gmail.com" aria-label="Email">
+                    <a href="mailto:codeathon4.0@prathyusha.edu.in" aria-label="Email">
                         <FaEnvelope />
                     </a>
                     <a href="https://www.instagram.com/codeathon.pec?igsh=NnFzanJ4OTI4Z2Vv" target="_blank" rel="noopener noreferrer" aria-label="Instagram">

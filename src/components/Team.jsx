@@ -2,7 +2,7 @@ const CoreCrew = () => {
     const organizers = [
         { name: "PACE", logo: "https://res.cloudinary.com/dvvuhiora/image/upload/v1770281600/gbrvxm0vpiv5sc3iwwyb.jpg" },
         { name: "GSA Club", logo: "https://res.cloudinary.com/dvvuhiora/image/upload/v1770281831/o4xdg8em520yf1mwrpza.jpg" },
-        { name: "ACM", logo: "https://res.cloudinary.com/dvvuhiora/image/upload/v1770281831/o4xdg8em520yf1mwrpza.jpg" },
+        { name: "ACM", logo: "https://res.cloudinary.com/dvvuhiora/image/upload/v1770281740/u2bluetod2krpw0cyi5z.jpg" },
         { name: "SCOPE", logo: "https://res.cloudinary.com/dvvuhiora/image/upload/v1770281685/wrpodr9ydxsjuzsjp4hr.jpg" }
     ];
 

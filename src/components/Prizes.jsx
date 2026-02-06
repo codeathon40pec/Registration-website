@@ -1,9 +1,9 @@
 const Prizes = () => {
     const prizes = [
-        { title: "1st Prize", amount: "₹ 20,000", desc: "The Ultimate Survivor", icon: "🥇" },
-        { title: "2nd Prize", amount: "₹ 10,000", desc: "The Derry Hero", icon: "🥈" },
-        { title: "3rd Prize", amount: "₹ 5,000", desc: "Georgie's Boat Award", icon: "🥉" },
-        { title: "Best Performers (x5)", amount: "₹ 1,000", desc: "Special Recognition", icon: "🏅" },
+        { title: "1st Prize", amount: "₹ 20,000", icon: "🥇" },
+        { title: "2nd Prize", amount: "₹ 10,000", icon: "🥈" },
+        { title: "3rd Prize", amount: "₹ 5,000", icon: "🥉" },
+        { title: "Best Performers (x5)", amount: "₹ 1,000", icon: "🏅" },
     ];
 
     return (

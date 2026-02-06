@@ -10,20 +10,9 @@ const Thunder = () => {
     const { isPlaying, getAudioData, isBlocked } = context;
     const [flashOpacity, setFlashOpacity] = useState(0);
     const lastFlashTimeRef = useRef(0);
-    const audioRef = useRef(null);
+    const audioRef = useRef(null); // Keep it null effectively or remove usages
     const animationFrameRef = useRef(null);
     const timeoutRef = useRef(null);
-
-    // Initialize Thunder Audio (Secondary sound effect)
-    useEffect(() => {
-        try {
-            audioRef.current = new Audio(thunderSound);
-            audioRef.current.volume = 0.5;
-        } catch (e) {
-            console.error("Failed to initialize thunder audio", e);
-        }
-    }, []);
-
     const triggerFlash = () => {
         // If blocked (e.g. modal open), do NOTHING
         if (isBlocked) return;
@@ -35,12 +24,6 @@ const Thunder = () => {
         setTimeout(() => setFlashOpacity(0), 100);
         setTimeout(() => setFlashOpacity(0.6), 250);
         setTimeout(() => setFlashOpacity(0), 400);
-
-        // Play Thunder Sound (ONLY if audio is enabled and not blocked)
-        if (isPlaying && audioRef.current) {
-            audioRef.current.currentTime = 0;
-            audioRef.current.play().catch(() => { });
-        }
     };
 
     useEffect(() => {
