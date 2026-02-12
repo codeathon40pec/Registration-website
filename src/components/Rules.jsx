@@ -2,7 +2,7 @@ import { useRef } from 'react';
 
 const Rules = () => {
     const rulesList = [
-        { id: 1, title: "Identification", desc: "Valid student ID is mandatory and selected teams must submit a Bonafide certificate." },
+        { id: 1, title: "Identification", desc: "Valid student ID is mandatory." },
         { id: 2, title: "Team Composition", desc: "Teams can have up to 4 members, including 1 lead and 3 members." },
         { id: 3, title: "Jury Decision", desc: "The decision of the jury members is final and binding." },
         { id: 4, title: "Equipment", desc: "Teams must bring their own laptops and other required accessories." },
