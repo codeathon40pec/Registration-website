@@ -18,6 +18,7 @@ import CodeathonThree from './components/CodeathonThree';
 import FloatingCountdown from './components/FloatingCountdown';
 import { useEffect } from 'react';
 import { useAudio } from './context/AudioContext';
+import { Analytics } from '@vercel/analytics/react';
 
 // Wrapper to handle scroll-to-hash
 const ScrollToHashElement = () => {
@@ -91,6 +92,7 @@ function App() {
         <Route path="/codeathon2" element={<CodeathonTwo />} />
         <Route path="/codeathon3" element={<CodeathonThree />} />
       </Routes>
+      <Analytics />
     </Router>
   );
 }
