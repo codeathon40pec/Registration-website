@@ -15,7 +15,7 @@ const Rules = () => {
         { id: 11, title: "Food & Dining", desc: "Dinner and snacks will be served." },
         { id: 12, title: "Refreshments", desc: "Light refreshments will be available." },
         { id: 13, title: "Power & Connectivity", desc: "It is suggested to bring your extension boxes and Wi-Fi dongles." },
-        { id: 14, title: "Pre-Requireties", desc: "For IoT-related problem statements, you need to bring the required materials such as sensors, cameras, and other necessary hardware components."},
+        { id: 14, title: "Pre-Requireties", desc: "For IoT projects, bring required materials like sensors and other hardwares."},
     ];
 
     return (
